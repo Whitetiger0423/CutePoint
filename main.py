@@ -140,10 +140,10 @@ async def 정보(ctx):
         embed.add_field(name="", value="`/등록`을 통해 가입한 후 다시 사용해주세요.", inline=False)
     await ctx.respond(embed=embed)
 
+bot.run(os.getenv("BOT_TOKEN"))
+
 schedule.every().day.at("00:00").do(check)
 
 while True:
     schedule.run_pending()
     time.sleep(1)
-
-bot.run(os.getenv("BOT_TOKEN"))
