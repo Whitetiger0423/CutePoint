@@ -21,12 +21,12 @@ def check():
                 UserData += 1
             with open(f"{i}", "wb") as f:
                 pickle.dump(UserData, f)
-        await asyncio.sleep(20)
+        await.sleep(20)
 
 @bot.event
 async def on_ready():
     print(f"Log In as {bot.user.name}({bot.user.id})")
-    check()
+    await check()
 
 @bot.slash_command(description="유저 정보를 등록합니다.")
 async def 등록(ctx):
