@@ -13,7 +13,7 @@ path = "./"
 file_list = os.listdir(path)
 file_list_pkl = [file for file in file_list if file.endswith(".pkl")]
 
-def check():
+async def check():
     while True:
         for i in file_list_pkl:
             with open(f"{i}", "rb") as f:
