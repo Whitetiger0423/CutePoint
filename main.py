@@ -3,28 +3,30 @@ import random
 import os
 import discord
 import dotenv
-import schedule
 import time
+import asyncio
 
 bot = discord.Bot()
 dotenv.load_dotenv()
-
-@bot.event
-async def on_ready():
-    print(f"Log In as {bot.user.name}({bot.user.id})")
 
 path = "./"
 file_list = os.listdir(path)
 file_list_pkl = [file for file in file_list if file.endswith(".pkl")]
 
 def check():
-    for i in file_list_pkl:
-        with open(f"{i}", "rb") as f:
-            UserData = pickle.load(f)
-            UserData += 1
-        with open(f"{i}", "wb") as f:
-            pickle.dump(UserData, f)
+    while True:
+        for i in file_list_pkl:
+            with open(f"{i}", "rb") as f:
+                UserData = pickle.load(f)
+                UserData += 1
+            with open(f"{i}", "wb") as f:
+                pickle.dump(UserData, f)
+        await asyncio.sleep(20)
 
+@bot.event
+async def on_ready():
+    print(f"Log In as {bot.user.name}({bot.user.id})")
+    check()
 
 @bot.slash_command(description="유저 정보를 등록합니다.")
 async def 등록(ctx):
@@ -141,9 +143,3 @@ async def 정보(ctx):
     await ctx.respond(embed=embed)
 
 bot.run(os.getenv("BOT_TOKEN"))
-
-schedule.every().day.at("00:00").do(check)
-
-while True:
-    schedule.run_pending()
-    time.sleep(1)
