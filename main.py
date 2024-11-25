@@ -21,7 +21,7 @@ async def check():
                 UserData += 1
             with open(f"{i}", "wb") as f:
                 pickle.dump(UserData, f)
-        await asyncio.sleep(20)
+        await asyncio.sleep(3600)
 
 @bot.event
 async def on_ready():
