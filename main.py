@@ -26,7 +26,7 @@ async def check():
 @bot.event
 async def on_ready():
     print(f"Log In as {bot.user.name}({bot.user.id})")
-    check()
+    await check()
 
 @bot.slash_command(description="유저 정보를 등록합니다.")
 async def 등록(ctx):
