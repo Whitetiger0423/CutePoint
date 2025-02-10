@@ -144,10 +144,9 @@ async def 정보(ctx):
 
 @bot.slash_command(description="니은을 핑합니다.")
 async def 핑(ctx, num:int):
-    StartMessage = await ctx.respond(f"{num}회 핑 시작!", ephemeral=True)
+    await ctx.respond(f"{num}회 핑 시작!", ephemeral=True)
     for i in range(num):
         await ctx.send("<@868164373548531712>")
-    await StartMessage.response.edit_message(content=f"{num}회 핑 완료!")
 
 
 
