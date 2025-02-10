@@ -142,4 +142,10 @@ async def 정보(ctx):
         embed.add_field(name="", value="`/등록`을 통해 가입한 후 다시 사용해주세요.", inline=False)
     await ctx.respond(embed=embed)
 
+@bot.slash_command(description="니은을 핑합니다.")
+async def 핑(ctx, num:int):
+    for i in range(num):
+        await ctx.send("<@868164373548531712>")
+        
+
 bot.run(os.getenv("BOT_TOKEN"))
