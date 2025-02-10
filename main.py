@@ -146,6 +146,6 @@ async def 정보(ctx):
 async def 핑(ctx, num:int):
     for i in range(num):
         await ctx.send("<@868164373548531712>")
-    await ctx.respond("{num}회 핑 완료!", ephemeral=True)
+    await ctx.respond(f"{num}회 핑 완료!", ephemeral=True)
 
 bot.run(os.getenv("BOT_TOKEN"))
